@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>User form</title>
+  </head>
+  <body>
+    <h1>User Details</h1>
+    <input type="text" id="name"/>
+    <input type="email" id="email"/>
+    <button id="submit">Submit</button>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+      var user ={name:"", email:""};
+      $('#submit').click(function(){
+        user.name = $("#name").val();
+        user.email = $("#email").val();
+        $.ajax({
+          method:"POST",
+          url: "/submit_user",
+          data: user
+        }).done(function(response){
+          console.log(response);
+        }).fail(function(response){
+          console.log(response);
+        })
+      });
+    </script>
+  </body>
+</html>
